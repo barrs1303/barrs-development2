@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrs Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar text-white py-4 px-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Barrs<span class="text-indigo-200">Development</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link font-medium">Home</a>
+                <a href="produk.html" class="nav-link font-medium">Produk</a>
+                <!-- <a href="keranjang.html" class="nav-link font-medium">Keranjang</a> -->
+                <a href="service.html" class="nav-link font-medium">service</a>
+                <!-- <a href="contact.html" class="nav-link font-medium">Contact</a> -->
+            </div>
+            <button class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-12">Produk Saya</h1>
+            
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+                <div class="flex items-center space-x-4">
+                    <span class="font-medium">Filter:</span>
+                    <select class="bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option>Semua Kategori</option>
+                        <option>Software</option>
+                        <option>Hardware</option>
+                        <option>Layanan</option>
+                    </select>
+                    <select class="bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option>Urutkan</option>
+                        <option>Harga Tertinggi</option>
+                        <option>Harga Terendah</option>
+                        <option>Terbaru</option>
+                    </select>
+                </div>
+                <div class="relative w-full md:w-auto">
+                    <input type="text" placeholder="Cari produk..." class="bg-white border border-gray-300 rounded-md px-4 py-2 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a43de75d-866b-4fc2-b026-725397e7c3f4.png" alt="Enterprise software dashboard showing analytics and business metrics" class="w-full h-48 object-cover">
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Enterprise Software Suite</h3>
+                        <p class="text-gray-600 mb-4">Solusi perangkat lunak all-in-one untuk manajemen bisnis perusahaan.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 5.000.000</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('Enterprise Software Suite', 5000000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72171606-86f8-4319-abb9-a93abacceb19.png" alt="Cloud storage infrastructure with servers and network connections" class="w-full h-48 object-cover">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cloud Storage Solution</h3>
+                        <p class="text-gray-600 mb-4">Penyimpanan cloud yang aman dan terukur untuk bisnis Anda.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 2.500.000/bln</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('Cloud Storage Solution', 2500000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f90aa42-cf84-4235-966e-b45d09ad3f9d.png" alt="ERP system interface showing inventory management and sales data" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sistem ERP Custom</h3>
+                        <p class="text-gray-600 mb-4">Sistem ERP yang disesuaikan dengan kebutuhan bisnis spesifik Anda.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 12.000.000</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('Sistem ERP Custom', 12000000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/81f3c859-7a07-4e2e-8768-ea50242ec22c.png" alt="Digital security shield protecting network and data" class="w-full h-48 object-cover">
+                        <span class="product-badge">Popular</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Security Enterprise Suite</h3>
+                        <p class="text-gray-600 mb-4">Paket keamanan lengkap untuk melindungi aset digital perusahaan.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 8.500.000</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('Security Enterprise Suite', 8500000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6c71a678-64a5-4e78-ad86-5e177e7312dd.png" alt="Artificial intelligence analyzing data patterns and graphs" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Business Analytics</h3>
+                        <p class="text-gray-600 mb-4">Analisis bisnis berbasis AI untuk pengambilan keputusan yang lebih baik.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 6.200.000</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('AI Business Analytics', 6200000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a7796d90-0e27-4062-9a7e-853f266f0b30.png" alt="Mobile application dashboard on smartphone screen" class="w-full h-48 object-cover">
+                        <span class="product-badge">Limited</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mobile App Development</h3>
+                        <p class="text-gray-600 mb-4">Pengembangan aplikasi mobile kustom untuk iOS dan Android.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600">Rp 15.000.000</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition" onclick="addToCart('Mobile App Development', 15000000)">+ Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center space-x-2">
+                    <a href="#" class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100">Previous</a>
+                    <a href="#" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">1</a>
+                    <a href="#" class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100">2</a>
+                    <a href="#" class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100">3</a>
+                    <a href="#" class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100">Next</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Barrs Development</h3>
+                    <p class="text-gray-400">Menyediakan solusi teknologi terbaik untuk membantu bisnis Anda tumbuh.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Menu</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="produk.html" class="text-gray-400 hover:text-white transition">Produk</a></li>
+                        <!-- <li><a href="keranjang.html" class="text-gray-400 hover:text-white transition">Keranjang</a></li> -->
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition">service</a></li>
+                        <!-- <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li> -->
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>jabalakbarkhalil2009@gmail.com</li>
+                        <li>+62 851-8941-1665</li>
+                        <li>No.205, Takengon, Aceh Tengah, Aceh, Indonesia</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Sosial Media</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 p-2 rounded-full hover:bg-indigo-600 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-700 p-2 rounded-full hover:bg-indigo-600 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-gray-700 p-2 rounded-full hover:bg-indigo-600 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 IT Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Shared JavaScript for all pages
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenu = document.querySelector('.md\\:flex');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('absolute');
+                mobileMenu.classList.toggle('top-16');
+                mobileMenu.classList.toggle('right-6');
+                mobileMenu.classList.toggle('bg-indigo-700');
+                mobileMenu.classList.toggle('rounded-lg');
+                mobileMenu.classList.toggle('p-4');
+                mobileMenu.classList.toggle('space-y-4');
+                mobileMenu.classList.toggle('space-x-0');
+            });
+        });
+        
+        // Cart functionality
+        function add()
